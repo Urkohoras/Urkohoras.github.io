@@ -1,0 +1,69 @@
+/* 1. REINICIO GLOBAL: Elimina la configuración por defecto del navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif; /* Tipografía limpia por defecto */
+    background-color: #f4f4f9; /* Un gris muy claro, no blanco puro */
+    color: #111;
+    line-height: 1.6;
+}
+
+/* 2. CONTENEDOR PRINCIPAL: La columna vertebral de tu interfaz */
+.contenedor-perfil {
+    display: flex;
+    flex-direction: column; /* Apila elementos verticalmente */
+    align-items: center; /* Centra todo en el eje transversal */
+    max-width: 600px; /* Evita que la web sea absurdamente ancha en PC */
+    margin: 0 auto; /* Centra el contenedor en la pantalla */
+    padding: 40px 20px;
+}
+
+/* 3. CABECERA Y FOTO: Tu identidad visual */
+.cabecera {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.foto-perfil {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%; /* Transforma un cuadrado en un círculo perfecto */
+    object-fit: cover; /* Evita que la foto se deforme o aplaste */
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Le da profundidad */
+}
+
+/* 4. ENLACES: Tu motor de conversión */
+.enlaces {
+    width: 100%;
+}
+
+.enlaces ul {
+    list-style: none; /* Elimina los puntos de la lista HTML */
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Define matemáticamente el espacio entre botones */
+}
+
+.enlaces a {
+    display: block;
+    text-align: center;
+    background-color: #1DB954; /* Verde genérico como base */
+    color: white;
+    text-decoration: none; /* Elimina el subrayado azul de los años 90 */
+    padding: 16px 20px;
+    border-radius: 8px; /* Suaviza las esquinas */
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Prepara el terreno para animaciones fluidas */
+}
+
+/* 5. INTERACCIÓN: Respuesta táctil/visual para el usuario */
+.enlaces a:hover {
+    transform: translateY(-3px); /* Eleva el botón ligeramente al pasar el ratón */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
