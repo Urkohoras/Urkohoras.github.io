@@ -1,69 +1,102 @@
-/* 1. REINICIO GLOBAL: Elimina la configuración por defecto del navegador */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Reinicio básico */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
 }
 
 body {
-    font-family: sans-serif; /* Tipografía limpia por defecto */
-    background-color: #f4f4f9; /* Un gris muy claro, no blanco puro */
-    color: #111;
-    line-height: 1.6;
-}
-
-/* 2. CONTENEDOR PRINCIPAL: La columna vertebral de tu interfaz */
-.contenedor-perfil {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Fondo moderno: un gradiente oscuro y elegante */
+    background: linear-gradient(135deg, #13151a 0%, #1e222d 100%);
+    color: #ffffff;
+    min-height: 100vh;
     display: flex;
-    flex-direction: column; /* Apila elementos verticalmente */
-    align-items: center; /* Centra todo en el eje transversal */
-    max-width: 600px; /* Evita que la web sea absurdamente ancha en PC */
-    margin: 0 auto; /* Centra el contenedor en la pantalla */
-    padding: 40px 20px;
+    justify-content: center;
+    align-items: center; /* Esto centra tu tarjeta en la pantalla */
+    padding: 20px;
 }
 
-/* 3. CABECERA Y FOTO: Tu identidad visual */
-.cabecera {
+/* La tarjeta principal con efecto cristal */
+.contenedor-perfil {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px 30px;
     text-align: center;
-    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.03); /* Transparencia */
+    backdrop-filter: blur(12px); /* El efecto de desenfoque */
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
 .foto-perfil {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%; /* Transforma un cuadrado en un círculo perfecto */
-    object-fit: cover; /* Evita que la foto se deforme o aplaste */
-    margin-bottom: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Le da profundidad */
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #1DB954; /* Un toque verde para destacar */
+    margin-bottom: 20px;
 }
 
-/* 4. ENLACES: Tu motor de conversión */
-.enlaces {
-    width: 100%;
+.cabecera h1 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
 }
 
+.cabecera p {
+    font-size: 0.95rem;
+    color: #a0a0a0;
+    margin-bottom: 30px;
+}
+
+/* Estilos de los botones */
 .enlaces ul {
-    list-style: none; /* Elimina los puntos de la lista HTML */
+    list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 16px; /* Define matemáticamente el espacio entre botones */
+    gap: 15px;
 }
 
 .enlaces a {
     display: block;
-    text-align: center;
-    background-color: #1DB954; /* Verde genérico como base */
-    color: white;
-    text-decoration: none; /* Elimina el subrayado azul de los años 90 */
-    padding: 16px 20px;
-    border-radius: 8px; /* Suaviza las esquinas */
-    font-weight: bold;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 14px;
+    font-weight: 500;
     letter-spacing: 0.5px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Prepara el terreno para animaciones fluidas */
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* 5. INTERACCIÓN: Respuesta táctil/visual para el usuario */
-.enlaces a:hover {
-    transform: translateY(-3px); /* Eleva el botón ligeramente al pasar el ratón */
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+/* Animación al pasar el ratón */
+/* Hover para Instagram (Gradiente oficial) */
+.enlaces a.btn-ig:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(220, 39, 67, 0.4);
+    
+    /* EL CAMBIO CLAVE AQUÍ: Eliminamos el borde por completo en lugar de hacerlo transparente */
+    border: none; 
+}
+
+/* Hover para Spotify (Verde oficial) */
+.enlaces a.btn-spotify:hover {
+    background: #1DB954;
+    color: white; /* Texto blanco para que resalte bien */
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(29, 185, 84, 0.4);
+}
+
+/* Hover para YouTube (Rojo oficial) */
+.enlaces a.btn-yt:hover {
+    background: #FF0000;
+    color: white;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
 }
