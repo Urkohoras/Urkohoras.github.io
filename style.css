@@ -61,7 +61,11 @@ body {
 }
 
 .enlaces a {
-    display: block;
+    display: flex; /* Cambiamos block por flex para alinear icono y texto */
+    align-items: center; /* Los centra verticalmente */
+    justify-content: center; /* Los centra horizontalmente */
+    gap: 12px; /* El espacio exacto entre el logo y la palabra */
+    
     padding: 16px;
     background: rgba(255, 255, 255, 0.08);
     color: #ffffff;
@@ -73,6 +77,11 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+/* Hacemos los iconos un pelín más grandes para que destaquen */
+.enlaces a i {
+    font-size: 1.3rem;
+}
+
 /* Animación al pasar el ratón */
 /* Hover para Instagram (Gradiente oficial) */
 .enlaces a.btn-ig:hover {
@@ -81,8 +90,11 @@ body {
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(220, 39, 67, 0.4);
     
-    /* EL CAMBIO CLAVE AQUÍ: Eliminamos el borde por completo en lugar de hacerlo transparente */
-    border: none; 
+    /* Mantenemos el grosor de 1px pero lo hacemos transparente para que no cambie de tamaño */
+    border: 1px solid transparent; 
+    
+    /* Evita que el color de fondo pinte por debajo del borde transparente (quita las rayitas) */
+    background-clip: padding-box; 
 }
 
 /* Hover para Spotify (Verde oficial) */
