@@ -135,6 +135,17 @@ btnAudio.addEventListener('click', () => {
 // LÓGICA NIVEL 3: VICTORIA FINAL
 // ==========================================
 btnComprobar3.addEventListener('click', () => {
+    
+    // 1. CORTAR EL AUDIO DE RAÍZ
+    audioSecreto.pause();
+    audioSecreto.currentTime = 0; // Lo devuelve al inicio
+    
+    // 2. REINICIAR EL BOTÓN VISUALMENTE (Por si seguía en verde)
+    btnAudio.innerHTML = '<i class="fa-solid fa-play"></i> REPRODUCIR PISTA DE AUDIO';
+    btnAudio.style.background = 'rgba(29, 185, 84, 0.1)';
+    btnAudio.style.color = '#1DB954';
+
+    // 3. VALIDACIÓN (El resto de tu código igual)
     const intento3 = inputRespuesta3.value.trim().toLowerCase();
 
     if (intento3 === RESPUESTA_FINAL) {
@@ -150,14 +161,9 @@ btnComprobar3.addEventListener('click', () => {
         
         // Transición a la pantalla de captura de leads
         setTimeout(() => {
-            // Cambiamos el título principal
             tituloCabecera.textContent = 'SISTEMA DESBLOQUEADO';
             tituloCabecera.style.color = '#1DB954';
-            
-            // Limpiamos el texto de estado que ya no aporta nada
             estadoSistema.style.display = 'none';
-
-            // Ocultamos el último nivel y mostramos el premio/formulario
             bloquePrueba3.style.display = 'none';
             pantallaFinal.style.display = 'block';
         }, 2000);
@@ -168,4 +174,70 @@ btnComprobar3.addEventListener('click', () => {
         inputRespuesta3.style.border = '1px solid #dc2743';
         setTimeout(() => { inputRespuesta3.style.border = '1px solid rgba(255,255,255,0.2)'; }, 1000);
     }
+});
+
+// ==========================================
+// LÓGICA DE CAPTURA DE LEAD Y RECOMPENSA
+// ==========================================
+const formularioFinal = document.getElementById('formulario-final');
+const btnSubmitFinal = document.getElementById('btn-submit-final');
+const contenedorFormulario = document.getElementById('contenedor-formulario');
+const formError = document.getElementById('form-error');
+const recompensaFinal = document.getElementById('recompensa-final');
+
+// Interceptamos el momento en que le dan al botón de enviar correo
+formularioFinal.addEventListener('submit', async function(event) {
+    // ESTO ES CLAVE: Detiene la redirección automática de Formspree
+    event.preventDefault(); 
+    
+    // Feedback visual de que está pensando
+    btnSubmitFinal.textContent = "ENCRIPTANDO...";
+    btnSubmitFinal.style.opacity = "0.7";
+    
+    // Empaquetamos los datos del formulario
+    let data = new FormData(event.target);
+    
+    try {
+        // Hacemos el envío por debajo (AJAX)
+        const response = await fetch(event.target.action, {
+            method: formularioFinal.method,
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        });
+        
+        if (response.ok) {
+            // ÉXITO: Ocultamos el formulario y mostramos el reproductor del adelanto
+            contenedorFormulario.style.display = 'none';
+            recompensaFinal.style.display = 'block';
+        } else {
+            // Fallo de Formspree
+            formError.style.display = 'block';
+            btnSubmitFinal.textContent = "UNIRME A LA LISTA";
+            btnSubmitFinal.style.opacity = "1";
+        }
+    } catch (error) {
+        // Fallo de red del usuario
+        formError.innerHTML = "Fallo de conexión. Revisa tu red.";
+        formError.style.display = 'block';
+        btnSubmitFinal.textContent = "UNIRME A LA LISTA";
+        btnSubmitFinal.style.opacity = "1";
+    }
+});
+
+// Lógica para reproducir los 10 segundos del adelanto
+const btnAdelanto = document.getElementById('btn-adelanto');
+const audioAdelanto = document.getElementById('audio-adelanto');
+
+btnAdelanto.addEventListener('click', () => {
+    audioAdelanto.play();
+    btnAdelanto.innerHTML = '<i class="fa-solid fa-volume-high"></i> REPRODUCIENDO...';
+    btnAdelanto.style.background = '#1DB954';
+    btnAdelanto.style.color = '#ffffff';
+
+    // A los 10 segundos, el botón se reinicia
+    setTimeout(() => {
+        btnAdelanto.innerHTML = '<i class="fa-solid fa-play"></i> ESCUCHAR "CHEESECAKE!!"';
+        btnAdelanto.style.background = 'rgba(29, 185, 84, 0.1)';
+        btnAdelanto.style.color = '#1DB954';
+    }, 10000); 
 });

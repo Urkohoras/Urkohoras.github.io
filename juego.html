@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceso Restringido</title>
+    <title>Hackeando a urk0</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -84,20 +84,33 @@
             </p>
             
             <p style="margin-bottom: 20px; font-size: 0.9rem; color: #ddd;">
-                Si has llegado hasta aquí eres un duro. Ese es el nombre de lo próximo que viene en abril. Si te ha molado la experiencia déjame tu correo aquí y te aviso cuando salga el tema (tranqui que no te voy a andar mandado nada de publicidad ni rollos jeje).
+                Si has llegado hasta aquí eres un duro. "cheesecake!!" es el nombre de lo próximo que viene en abril. Si quieres escuchar el ADELANTO déjame tu correo abajo y se desbloqueará (tranqui que no te voy a andar mandado nada de publicidad ni rollos jeje).
             </p>
             
-            <form action="https://formspree.io/f/xreynkqz" method="POST" id="formulario-final">
-                <input type="email" name="email" required placeholder="Tu correo electrónico..." 
-                    style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; margin-bottom: 15px; text-align: center;">
+            <div id="contenedor-formulario">
+                <form action="https://formspree.io/f/xreynkqz" method="POST" id="formulario-final">
+                    <input type="email" name="email" required placeholder="Tu correo electrónico..." 
+                        style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white; margin-bottom: 15px; text-align: center;">
+                    
+                    <input type="hidden" name="origen" value="Escape Room Web">
+                    
+                    <button type="submit" id="btn-submit-final"
+                            style="width: 100%; padding: 12px; border-radius: 8px; border: none; background: #1DB954; color: white; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(29, 185, 84, 0.4);">
+                        UNIRME A LA LISTA
+                    </button>
+                </form>
+                <p id="form-error" style="color: #dc2743; margin-top: 10px; font-size: 0.8rem; display: none;">Error al conectar. Inténtalo de nuevo.</p>
+            </div>
+
+            <div id="recompensa-final" style="display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p style="color: #1DB954; font-weight: bold; margin-bottom: 15px; font-size: 0.9rem; letter-spacing: 1px;">SISTEMA VULNERADO. ADELANTO DESBLOQUEADO:</p>
                 
-                <input type="hidden" name="origen" value="Escape Room Web">
-                
-                <button type="submit" 
-                        style="width: 100%; padding: 12px; border-radius: 8px; border: none; background: #1DB954; color: white; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(29, 185, 84, 0.4);">
-                    UNIRME A LA LISTA
+                <audio id="audio-adelanto" src="cheescake_adelanto.wav"></audio>
+
+                <button id="btn-adelanto" style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid #1DB954; background: rgba(29, 185, 84, 0.1); color: #1DB954; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <i class="fa-solid fa-play"></i> ESCUCHAR "CHEESECAKE!!"
                 </button>
-            </form>
+            </div>
         </div>
 
     </main>
